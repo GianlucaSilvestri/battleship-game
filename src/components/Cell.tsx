@@ -23,12 +23,12 @@ export default React.memo(function Cell({
   }, [onClick, x, y]);
 
   return (
-    <div
+    <button
       aria-label={`Cell [${x}, ${y}]`}
       className={`${styles.cell} ${isRevealed ? `${styles.disabledCell} ${isShip ? (isSunk ? styles.sunkCell : styles.burnCell) : styles.seaCell}` : styles.enabledCell}`}
       onClick={handleClick}
     >
       {isRevealed ? (isShip ? (isSunk ? "💀" : "🔥") : "💧") : ""}
-    </div>
+    </button>
   );
 });
