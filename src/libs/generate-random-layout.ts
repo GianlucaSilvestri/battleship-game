@@ -34,8 +34,8 @@ export default function generateRandomLayout({ shipTypes, board }: Settings) {
     layout.push({ ship, positions });
   };
 
-  Object.entries(shipTypes).forEach(([ship, { size }]) =>
-    placeShip(ship, size),
+  Object.entries(shipTypes).forEach(([ship, { size, count }]) =>
+    Array.from({ length: count }).map(() => placeShip(ship, size)),
   );
 
   return layout;
