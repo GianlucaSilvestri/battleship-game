@@ -1,0 +1,29 @@
+.board {
+    border: 1px solid white;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.boardDisabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.boardRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.gameOverBanner {
+    position: absolute;
+    background: #0F0F0F;
+    border-radius: 16px;
+    padding: 16px 32px;
+    border: 1px solid white;
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
