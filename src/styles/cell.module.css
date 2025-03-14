@@ -8,8 +8,10 @@
     width: 24px;
 }
 
-.cell:hover {
-    opacity: 0.5;
+@media (hover: hover) and (pointer: fine) {
+    .cell:hover {
+        opacity: 0.5;
+    }
 }
 
 @media (min-width: 600px) {
