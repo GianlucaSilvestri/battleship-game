@@ -24,13 +24,13 @@ function App() {
 
   return (
     <>
-      <header className={styles.header}>
+      <header className={styles.header} role="banner">
         <Topbar handleReset={handleReset} />
       </header>
-      <main className={styles.main}>
+      <main className={styles.main} role="main">
         <Board layout={layout} board={settings.board} />
       </main>
-      <footer className={styles.footer}>
+      <footer className={styles.footer} role="contentinfo">
         <Legend />
       </footer>
     </>

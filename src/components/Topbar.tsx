@@ -9,7 +9,11 @@ export default function Topbar({ handleReset }: Props) {
   return (
     <section className={styles.topbar}>
       <h1>{"BATTLESHIP"}</h1>
-      <button onClick={handleReset} className={styles.resetButton}>
+      <button
+        onClick={handleReset}
+        className={styles.resetButton}
+        aria-label="Reset the game"
+      >
         {"RESET"}
       </button>
     </section>

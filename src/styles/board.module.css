@@ -16,9 +16,8 @@
     flex-direction: row;
 }
 
-.gameOverBanner {
+.messageBanner {
     position: absolute;
-    background: #0F0F0F;
     border-radius: 16px;
     padding: 16px 32px;
     border: 1px solid white;
@@ -26,4 +25,12 @@
     left: 50%;
     opacity: 1;
     transform: translate(-50%, -50%);
+}
+
+.gameOverBanner {
+    background: #0F0F0F;
+}
+
+.sunkBanner {
+    background: #FF595E;
 }
