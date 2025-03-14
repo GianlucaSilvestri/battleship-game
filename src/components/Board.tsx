@@ -89,12 +89,12 @@ export default function Board({ layout, board: { rows, cols } }: GameProps) {
       </section>
       {isGameOver && (
         <div className={`${styles.messageBanner} ${styles.gameOverBanner}`}>
-          <h3>{"GAME OVER!"}</h3>
+          <h3>{"GAME OVER"}</h3>
         </div>
       )}
       {recentlySunkShip && (
         <div className={`${styles.messageBanner} ${styles.sunkBanner}`}>
-          <h3>{`${recentlySunkShip} SUNK!`}</h3>
+          <h3>{`${recentlySunkShip} sunk!`}</h3>
         </div>
       )}
     </>
