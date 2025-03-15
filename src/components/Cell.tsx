@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import styles from "../styles/cell.module.css";
 
 type Props = {
@@ -20,9 +20,21 @@ export default React.memo(function Cell({
     onClick(coords);
   }, [onClick, coords]);
 
+  let tooltip = useMemo(() => {
+    const status = isRevealed
+      ? isSunk
+        ? "sunk ship"
+        : isShip
+          ? "hit"
+          : "miss"
+      : "to reveal";
+
+    return `Cell at coords ${coords} - ${status}!`;
+  }, [coords, isRevealed, isShip, isSunk]);
+
   return (
     <button
-      aria-label={`Cell [${coords.toString()}]`}
+      aria-label={tooltip}
       className={`${styles.cell} ${isRevealed ? `${styles.disabledCell} ${isShip ? (isSunk ? styles.sunkCell : styles.burnCell) : styles.seaCell}` : styles.enabledCell}`}
       onClick={handleClick}
     >
