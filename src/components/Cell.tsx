@@ -2,12 +2,11 @@ import React, { useCallback } from "react";
 import styles from "../styles/cell.module.css";
 
 type Props = {
-  onClick: (x: number, y: number) => void;
+  onClick: (coords: string) => void;
   isRevealed: boolean;
   isShip: boolean;
   isSunk: boolean;
-  x: number;
-  y: number;
+  coords: string;
 };
 
 export default React.memo(function Cell({
@@ -15,16 +14,15 @@ export default React.memo(function Cell({
   isShip,
   isSunk,
   onClick,
-  x,
-  y,
+  coords,
 }: Props) {
   const handleClick = useCallback(() => {
-    onClick(x, y);
-  }, [onClick, x, y]);
+    onClick(coords);
+  }, [onClick, coords]);
 
   return (
     <button
-      aria-label={`Cell [${x}, ${y}]`}
+      aria-label={`Cell [${coords.toString()}]`}
       className={`${styles.cell} ${isRevealed ? `${styles.disabledCell} ${isShip ? (isSunk ? styles.sunkCell : styles.burnCell) : styles.seaCell}` : styles.enabledCell}`}
       onClick={handleClick}
     >

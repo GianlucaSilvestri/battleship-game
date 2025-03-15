@@ -13,7 +13,7 @@ export default function generateRandomLayout({ shipTypes, board }: Settings) {
         x < board.cols &&
         y >= 0 &&
         y < board.rows &&
-        !occupied.has(`${x},${y}`),
+        !occupied.has([x, y].toString()),
     );
 
   const placeShip = (ship: string, size: number) => {
@@ -29,7 +29,7 @@ export default function generateRandomLayout({ shipTypes, board }: Settings) {
       );
     } while (!isValidPlacement(positions));
 
-    positions.forEach(([x, y]) => occupied.add(`${x},${y}`));
+    positions.forEach((coords) => occupied.add(coords.toString()));
 
     layout.push({ ship, positions });
   };

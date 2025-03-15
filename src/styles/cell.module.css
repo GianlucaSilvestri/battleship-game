@@ -4,20 +4,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 24px;
-    width: 24px;
+    height: 9vw;
+    width: 9vw;
 }
 
 @media (hover: hover) and (pointer: fine) {
     .cell:hover {
         opacity: 0.5;
-    }
-}
-
-@media (min-width: 600px) {
-    .cell {
-        height: 32px;
-        width: 32px;
     }
 }
 

@@ -19,7 +19,7 @@
 .messageBanner {
     position: absolute;
     border-radius: 16px;
-    padding: 8px 16px;
+    padding: 4px 8px;
     border: 1px solid white;
     top: 50%;
     left: 50%;
@@ -27,7 +27,7 @@
     transform: translate(-50%, -50%);
 }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
     .messageBanner {
         padding: 16px 32px;
     }

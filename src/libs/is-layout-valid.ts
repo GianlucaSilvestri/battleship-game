@@ -38,7 +38,9 @@ export default function isValidLayout({ layout, settings }: Props): boolean {
 
   const overlappingShipsFound =
     new Set(
-      layout.flatMap((layout) => layout.positions.map(([x, y]) => `${x},${y}`)),
+      layout.flatMap((layout) =>
+        layout.positions.map((coords) => coords.toString()),
+      ),
     ).size !== layout.flatMap((layout) => layout.positions).length;
   if (overlappingShipsFound) return false;
 
