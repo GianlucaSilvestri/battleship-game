@@ -6,10 +6,12 @@ type Props = {
   isRevealed: boolean;
   isShip: boolean;
   isSunk: boolean;
+  disabled: boolean;
   coords: string;
 };
 
 export default React.memo(function Cell({
+  disabled,
   isRevealed,
   isShip,
   isSunk,
@@ -17,8 +19,10 @@ export default React.memo(function Cell({
   coords,
 }: Props) {
   const handleClick = useCallback(() => {
+    if (isRevealed) return;
+
     onClick(coords);
-  }, [onClick, coords]);
+  }, [isRevealed, onClick, coords]);
 
   let tooltip = useMemo(() => {
     const status = isRevealed
@@ -34,7 +38,9 @@ export default React.memo(function Cell({
 
   return (
     <button
+      disabled={disabled}
       aria-label={tooltip}
+      aria-disabled={disabled}
       className={`${styles.cell} ${isRevealed ? `${styles.disabledCell} ${isShip ? (isSunk ? styles.sunkCell : styles.burnCell) : styles.seaCell}` : styles.enabledCell}`}
       onClick={handleClick}
     >

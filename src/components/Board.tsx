@@ -17,6 +17,7 @@ export default function Board({ layout, board: { rows, cols } }: GameProps) {
 
   useEffect(() => {
     setRevealedCells([]);
+    setRecentlySunkShip(undefined);
   }, [layout]);
 
   const isRevealed = useCallback(
@@ -71,9 +72,9 @@ export default function Board({ layout, board: { rows, cols } }: GameProps) {
           <div key={x} className={styles.boardRow}>
             {Array.from({ length: cols }).map((_, y) => {
               const coords = [x, y].toString();
-
               return (
                 <Cell
+                  disabled={isGameOver || !!recentlySunkShip}
                   onClick={handleCellClicked}
                   isRevealed={isRevealed(coords)}
                   isShip={!!shipAt(coords)}
