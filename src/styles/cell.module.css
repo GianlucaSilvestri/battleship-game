@@ -8,12 +8,6 @@
     width: 9vw;
 }
 
-@media (hover: hover) and (pointer: fine) {
-    .cell:hover {
-        opacity: 0.5;
-    }
-}
-
 @media (min-width: 768px) {
     .cell {
         height: 64px;
@@ -21,12 +15,14 @@
     }
 }
 
-.enabledCell {
+.cell:not([disabled]) {
     cursor: pointer;
 }
 
-.disabledCell {
-    pointer-events: none;
+@media (hover: hover) and (pointer: fine) {
+    .cell:not([disabled]):hover {
+        opacity: 0.5;
+    }
 }
 
 .seaCell {

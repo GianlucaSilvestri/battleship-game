@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styles from "../styles/topbar.module.css";
+import { useAppDispatch } from "../libs/hooks";
+import { restart } from "../libs/stores/gameStatus";
 
-type Props = {
-  handleReset: () => void;
-};
+export default function Topbar() {
+  const dispatch = useAppDispatch();
 
-export default function Topbar({ handleReset }: Props) {
+  const handleReset = useCallback(() => {
+    dispatch(restart());
+  }, [dispatch]);
+
   return (
     <section className={styles.topbar}>
       <h1>{"BATTLESHIP"}</h1>

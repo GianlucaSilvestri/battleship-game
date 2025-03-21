@@ -1,34 +1,26 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Board from "./components/Board";
-import settings from "./settings.json";
-import isValidLayout from "./libs/is-layout-valid";
-import generateRandomLayout from "./libs/generate-random-layout";
-import { Ship } from "./types";
 import Legend from "./components/Legend";
 import Topbar from "./components/Topbar";
 import styles from "./styles/app.module.css";
+import { useAppDispatch } from "./libs/hooks";
+import { restart } from "./libs/stores/gameStatus";
+import settings from "./settings.json";
 
 function App() {
-  const [layout, setLayout] = useState<Ship[]>(generateRandomLayout(settings));
-  const [isLayoutValid, setIsLayoutValid] = useState(false);
-
-  const handleReset = useCallback(() => {
-    setLayout(generateRandomLayout(settings));
-  }, []);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    setIsLayoutValid(isValidLayout({ layout, settings }));
-  }, [layout]);
-
-  if (!isLayoutValid) return <p>Invalid data</p>;
+    dispatch(restart());
+  });
 
   return (
     <>
       <header className={styles.header} role="banner">
-        <Topbar handleReset={handleReset} />
+        <Topbar />
       </header>
       <main className={styles.main} role="main">
-        <Board layout={layout} board={settings.board} />
+        <Board {...settings.board} />
       </main>
       <footer className={styles.footer} role="contentinfo">
         <Legend />
